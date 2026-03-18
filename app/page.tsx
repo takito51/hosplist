@@ -179,6 +179,7 @@ export default function HomePage() {
           >
             東海北陸厚生局 医療機関一覧ページ
           </a>
+          <p className="text-xs text-slate-400 mt-2">v0.1.0</p>
         </div>
 
         {/* Drop Zone */}
