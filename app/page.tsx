@@ -108,9 +108,17 @@ export default function HomePage() {
       <div className="w-full max-w-2xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-slate-800">
+          <h1 className="text-2xl font-bold text-slate-800 mb-2">
             厚生局 医療機関データ整形ツール
           </h1>
+          <a
+            href="https://kouseikyoku.mhlw.go.jp/tokaihokuriku/newpage_00287.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-blue-500 hover:underline"
+          >
+            東海北陸厚生局 医療機関一覧ページ
+          </a>
         </div>
 
         {/* Drop Zone */}
