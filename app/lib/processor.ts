@@ -175,7 +175,17 @@ function extractDoctors(str: string): {
 // Main processing function
 // ──────────────────────────────────────────────
 
+export function processExcelWithPreview(buffer: ArrayBuffer): { output: ArrayBuffer; records: InstitutionRecord[] } {
+  const records = parseRecords(buffer);
+  const output = buildExcel(records);
+  return { output, records };
+}
+
 export function processExcel(buffer: ArrayBuffer): ArrayBuffer {
+  return buildExcel(parseRecords(buffer));
+}
+
+function parseRecords(buffer: ArrayBuffer): InstitutionRecord[] {
   const workbook = XLSX.read(buffer, { type: "array", cellText: false });
   const sheetName = workbook.SheetNames[0];
   const sheet = workbook.Sheets[sheetName];
@@ -378,6 +388,10 @@ export function processExcel(buffer: ArrayBuffer): ArrayBuffer {
     throw new Error("処理できるデータが見つかりませんでした。");
   }
 
+  return records;
+}
+
+function buildExcel(records: InstitutionRecord[]): ArrayBuffer {
   // ──────────────────────────────────────────────
   // Build output Excel
   // ──────────────────────────────────────────────
